@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers\API;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\TransactionStoreRequest;
+use App\Models\Transaction;
+use Illuminate\Http\JsonResponse;
+
+class TransactionController extends Controller
+{
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(TransactionStoreRequest $request): JsonResponse
+    {
+        $transaction = Transaction::create($request->validated());
+
+        return response()->json([
+            'message' => 'Transaction created successfully',
+            'data' => $transaction
+        ], 201);
+    }
+}
