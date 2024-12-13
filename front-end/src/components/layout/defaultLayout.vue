@@ -1,17 +1,15 @@
 <template>
-  <div class="wrapper">
-    <navBar />
 
-    <sideBar />
-
-    <div class="content-wrapper">
-      <RouterView />
+  <SideBar />
+  <NavBar />
+  <div class="page-wrapper">
+    <div class="page-body">
+      <div class="container-xl">
+        <router-view></router-view>
+      </div>
     </div>
-
-    <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">v0.0.0</div>
-    </footer>
   </div>
+
 </template>
 
 <script>

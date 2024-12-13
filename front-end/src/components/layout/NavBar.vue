@@ -1,27 +1,32 @@
 <template>
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
+  <header class="navbar navbar-expand-md d-none d-lg-flex d-print-none">
+    <div class="container-xl">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+        aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-nav flex-row order-md-last">
 
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <RouterLink to="/profile" class="dropdown-item">
-            <i class="fas fa-user mr-2"></i>
-            Profile
-          </RouterLink>
-          <div class="dropdown-divider"></div>
-          <a href="#" @click="logout()" class="dropdown-item"> <i class="fas fa-sign-out-alt mr-2"></i> Logout </a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+            <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+            <div class="d-none d-xl-block ps-2">
+              <div>Paweł Kuna</div>
+              <div class="mt-1 small text-secondary">UI Designer</div>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <RouterLink to="/profile" class="dropdown-item">Profile</RouterLink>
+            <div class="dropdown-divider"></div>
+            <RouterLink to="/logout" class="dropdown-item" @click="logout">Logout</RouterLink>
+          </div>
         </div>
-      </li>
-    </ul>
-  </nav>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-menu">
+
+      </div>
+    </div>
+  </header>
 </template>
 
 <script>

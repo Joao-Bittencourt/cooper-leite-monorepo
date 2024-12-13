@@ -1,10 +1,12 @@
 <template>
   <li class="nav-item">
     <router-link :to="link" class="nav-link" :class="{ active: isActive() }">
-      <i class="nav-icon" :class="icon" v-if="icon"></i>
-      <p>
+      <span class="nav-link-icon d-md-none d-lg-inline-block" v-if="icon">
         <slot></slot>
-      </p>
+      </span>
+      <span class="nav-link-title" v-if="title">
+        {{ title }}
+      </span>
     </router-link>
   </li>
 </template>
@@ -21,6 +23,11 @@ export default {
       type: String,
       default: '',
     },
+    title: {
+      type: String,
+      default: '',
+    },
+
   },
   methods: {
     isActive() {
