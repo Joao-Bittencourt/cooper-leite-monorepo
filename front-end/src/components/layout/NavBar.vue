@@ -12,7 +12,10 @@
           <i class="far fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="#" class="dropdown-item"> <i class="fas fa-user mr-2"></i> Profile </a>
+          <RouterLink to="/profile" class="dropdown-item">
+            <i class="fas fa-user mr-2"></i>
+            Profile
+          </RouterLink>
           <div class="dropdown-divider"></div>
           <a href="#" @click="logout()" class="dropdown-item"> <i class="fas fa-sign-out-alt mr-2"></i> Logout </a>
         </div>
