@@ -47,7 +47,7 @@ test('can store transaction', function () {
         ->and($transactions->first()->product_id)->toBe($product->id)
         ->and($transactions->first()->cooperative_id)->toBe($cooperative->id)
         ->and($transactions->first()->type)->toBe('I')
-        ->and((string) $transactions->first()->amount)->toBe($amount)
+        ->and(number_format($transactions->first()->amount, 4, '.', ''))->toBe($amount)
         ->and($transactions->first()->created_by)->toBe($user->id)
         ->and($transactions->first()->active)->toBe(1);
 });
