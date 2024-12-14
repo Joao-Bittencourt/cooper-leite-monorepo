@@ -1,0 +1,47 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+      
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+     
+    steps:
+    - name: Get the latest code
+      uses: actions/checkout@v3.5.3
+      with:
+          php-version: '8.2'
+    - name: Install Dependencies
+      run: |
+          cd back-end
+          composer update
+          composer install --optimize-autoloader --no-dev
+          npm install
+          npm run build
+          
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: juca-vendas.x10.mx
+        username: ${{ secrets.USER_FTP }}
+        password: ${{ secrets.PASS_FTP }}
+        server-dir: ./domains/cpl-l.x10.mx/public_html/back-end
+        local-dir: ./back-end/
+        log-level: minimal
+        timeout: 90000
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/tests*
+          **/tests/**
+          **/docker/**
+          **/docker*
+          **/Dockerfile
+          **/docker-compose*
+          **/.env.*
+          **/phpunit.xml
+          **/node_modules
+          **/node_modules/**
