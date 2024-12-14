@@ -1,75 +1,64 @@
 <template>
-    <div class="register-box">
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="/" class="h1"><b>Cooper Leite</b></a>
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <div class="text-center mb-4">
+                <a href="." class="navbar-brand navbar-brand-autodark">
+                    logo
+                </a>
             </div>
-            <div class="card-body">
-                <p class="login-box-msg">Register a new membership</p>
+            <form class="card card-md" action="/register" method="get" novalidate="" @submit.prevent>
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Create new account</h2>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" v-model="name" class="form-control" placeholder="Enter name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" v-model="email" class="form-control" placeholder="Enter email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <div class="input-group input-group-flat">
+                            <input type="password" v-model="password" class="form-control" placeholder="Password"
+                                autocomplete="off">
 
-                <form action="/register" method="post" @submit.prevent="registerSubmit()">
-                    <div class="input-group mb-3">
-                        <input type="text" v-model="name" class="form-control" placeholder="Name">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
-                            </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="email" v-model="email" class="form-control" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
+                    <div class="mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <div class="input-group input-group-flat">
+                            <input type="password" v-model="c_password" class="form-control" placeholder="Password"
+                                autocomplete="off">
+
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" v-model="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-check">
+                            <input type="checkbox" class="form-check-input">
+                            <span class="form-check-label">Agree the <a href="./terms-of-service.html"
+                                    tabindex="-1">terms
+                                    and policy</a>.</span>
+                        </label>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" v-model="c_password" class="form-control" placeholder="Retype password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary w-100">Create new account</button>
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                                <label for="agreeTerms">
-                                    I agree to the <a href="#">terms</a>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
-                        </div>
-
-                    </div>
-                </form>
-
-                <a href="/login" class="text-center">I already have a membership</a>
-            </div>
-
+                </div>
+            </form>
+        </div>
+        <div class="text-center text-secondary mt-3">
+            Already have account? <a href="/login" tabindex="-1">Sign in</a>
         </div>
     </div>
+
 </template>
 
 <script>
 import { register } from '../services/AuthService.js';
 export default {
     beforeMount() {
-        $('body').remove('sidebar-mini').addClass('register-page');
-        $('title').html('Register | Cooper Leite');
+        document.title = 'Register | Cooper Leite';
     },
     data() {
         return {

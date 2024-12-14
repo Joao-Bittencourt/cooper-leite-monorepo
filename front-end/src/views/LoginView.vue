@@ -1,57 +1,49 @@
 <template>
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="/" class="h1"><b>Cooper Leite</b> </a>
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <div class="text-center mb-4">
+                <a href="/" class="navbar-brand navbar-brand-autodark">
+                    logo
+                </a>
             </div>
-            <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+            <div class="card card-md">
+                <div class="card-body">
+                    <h2 class="h2 text-center mb-4">Login to your account</h2>
+                    <form action="./" method="get" autocomplete="off" novalidate @submit.prevent="loginSubmit()">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="your@email.com" v-model="email"
+                                autocomplete="off">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">
+                                Password
+                                <!-- <span class="form-label-description">
+                                    <a href="./forgot-password.html">I forgot password</a>
+                                </span> -->
+                            </label>
+                            <div class="input-group input-group-flat">
+                                <input type="password" class="form-control" placeholder="Your password"
+                                    v-model="password" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-check">
+                                <input type="checkbox" class="form-check-input" />
+                                <span class="form-check-label">Remember me</span>
+                            </label>
+                        </div>
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                        </div>
+                    </form>
+                </div>
 
-                <form action="/login" method="post" @submit.prevent="loginSubmit()">
-                    <div class="input-group mb-3">
-                        <input type="email" v-model="email" class="form-control" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" v-model="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-
-                <!-- <p class="mb-1">
-                    <a href="/forgot-password">I forgot my password</a>
-                </p> -->
-                <p class="mb-0">
-                    <a href="/register" class="text-center">Register a new membership</a>
-                </p>
             </div>
-            <!-- /.card-body -->
+            <div class="text-center text-secondary mt-3">
+                Don't have account yet? <a href="./register" tabindex="-1">Sign up</a>
+            </div>
         </div>
-        <!-- /.card -->
     </div>
 </template>
 
@@ -60,8 +52,7 @@ import { login } from '../services/AuthService.js';
 
 export default {
     beforeMount() {
-        $('body').remove('sidebar-mini').addClass('login-page');
-        $('title').html('Login | Cooper Leite');
+        document.title = 'Login | Cooper Leite';
     },
     data() {
         return {
