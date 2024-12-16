@@ -30,7 +30,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: juca-vendas.x10.mx
+        server: cpl-l.x10.mx
         username: ${{ secrets.USER_FTP }}
         password: ${{ secrets.PASS_FTP }}
         server-dir: ./domains/cpl-l.x10.mx/public_html/back-end/
