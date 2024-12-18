@@ -6,7 +6,7 @@
                     logo
                 </a>
             </div>
-            <form class="card card-md" action="/register" method="get" novalidate="" @submit.prevent>
+            <form class="card card-md" action="/register" method="get" novalidate="" @submit.prevent="registerSubmit()">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">Create new account</h2>
                     <div class="mb-3">
