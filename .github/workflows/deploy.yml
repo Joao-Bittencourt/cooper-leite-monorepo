@@ -42,7 +42,7 @@ jobs:
         server: cpl-l.x10.mx
         username: ${{ secrets.USER_FTP }}
         password: ${{ secrets.PASS_FTP }}
-        server-dir: ./
+        server-dir: ./public_html/
         local-dir: ./
         log-level: minimal
         timeout: 90000
