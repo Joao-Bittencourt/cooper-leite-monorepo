@@ -26,12 +26,15 @@ jobs:
           composer install --optimize-autoloader --no-dev
           npm install
           npm run build
-
+          
     - name: Install Dependencies front-end
       run: |
           cd front-end
           npm install
           npm run build
+          cd ..
+          mv front-end/dist/* .
+          rm -rf front-end 
           
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
