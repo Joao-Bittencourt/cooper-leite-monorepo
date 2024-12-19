@@ -1,13 +1,11 @@
-
-const API_URL = 'http://cpl-l.x10.mx/api';
+const API_URL = 'http://cpl-l.x10.mx/api'
 
 const apiUris = {
   login: '/login',
   register: '/register',
   user: '/user',
   products: '/products',
-  product: '/product',
-  ProductCreate: '/product/create',
+  productCreate: '/products',
 }
 
 // Adiciona o protocolo e a URL base às URIs

@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import { createProduct } from '../../services/ProductService.js'
+
 export default {
   data() {
     return {
@@ -55,7 +57,16 @@ export default {
   },
   methods: {
     productSubmit() {
-      console.log(this.name, this.description, this.unit, this.price)
+      let product = {
+        name: this.name,
+        description: this.description,
+        unit: this.unit,
+        price: this.price,
+      }
+
+      createProduct(product).then((response) => {
+        console.log(response)
+      })
     },
   },
 }
