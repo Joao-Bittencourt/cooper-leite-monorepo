@@ -23,6 +23,18 @@ const router = createRouter({
           component: () => import('../views/HomeView.vue'),
         },
         {
+          path: 'products',
+          name: 'products-list',
+          meta: { requiresAuth: true },
+          component: () => import('../views/Products/ListView.vue'),
+        },
+        {
+          path: 'products/create',
+          name: 'products-create',
+          meta: { requiresAuth: true },
+          component: () => import('../views/Products/CreateView.vue'),
+        },
+        {
           path: 'about',
           name: 'about',
           meta: { requiresAuth: true },
@@ -39,25 +51,24 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: () => import('../views/RegisterView.vue'),
-    }
+    },
   ],
 })
 
 router.beforeEach((to, from, next) => {
-
   if (to.meta.requiresAuth) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token')
     if (token && token !== 'undefined') {
       // User is authenticated, proceed to the route
-      next();
+      next()
     } else {
       // User is not authenticated, redirect to login
-      next('/login');
+      next('/login')
     }
   } else {
     // Non-protected route, allow access
-    next();
+    next()
   }
-});
+})
 
 export default router

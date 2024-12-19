@@ -27,7 +27,6 @@ export default {
       type: String,
       default: '',
     },
-
   },
   methods: {
     isActive() {

@@ -1,5 +1,5 @@
 <template>
-  <!-- <section class="content-header">
+  <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
@@ -8,10 +8,9 @@
             {{ title }}
           </h1>
         </div>
-      
       </div>
     </div>
-  </section> -->
+  </section>
 </template>
 
 <script>
@@ -27,10 +26,10 @@ export default {
     },
   },
   beforeMount() {
-    let title = this.$route.title;
-    title = this.title ? `${this.title} | Cooper Leite` : title;
+    let title = this.$route.title
+    title = this.title ? `${this.title} | Cooper Leite` : title
 
-    document.title = title;
+    document.title = title
   },
 }
 </script>

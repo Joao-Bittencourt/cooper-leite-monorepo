@@ -1,5 +1,4 @@
 <template>
-
   <SideBar />
   <NavBar />
   <div class="page-wrapper">
@@ -9,7 +8,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
