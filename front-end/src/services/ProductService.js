@@ -1,8 +1,8 @@
 import { apiRoutes } from './variables.js'
 import Swal from 'sweetalert2'
 
-export const getProducts = () => {
-  let result = fetch(apiRoutes.products, {
+export const getProducts = (params) => {
+  let result = fetch(apiRoutes.products + '?' + params.query, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
