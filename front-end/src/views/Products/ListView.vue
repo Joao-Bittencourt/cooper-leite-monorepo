@@ -34,6 +34,11 @@ export default {
         { name: 'description', label: 'Descrição' },
         { name: 'unit', label: 'Unidade' },
         { name: 'price', label: 'Preço' },
+        {
+          name: 'actions',
+          label: 'Ações',
+          actions: [{ name: 'view', icon: 'bi bi-eye', to: '/products/:id' }],
+        },
       ]
     },
     viewItem(id) {

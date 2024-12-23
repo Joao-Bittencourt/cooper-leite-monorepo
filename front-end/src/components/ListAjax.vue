@@ -22,10 +22,11 @@
         </li>
         <li
           class="page-item"
-          v-for="page in meta.last_page"
+          v-for="page in paginationRange"
           :key="page"
-          :class="{ active: currentPage === page }"
+          :class="{ active: page === currentPage, disabled: page === '...' }"
           @click="fetchData(page)"
+          :disabled="page === '...'"
         >
           <span class="page-link">{{ page }}</span>
         </li>
@@ -50,7 +51,17 @@
       <tbody>
         <tr v-for="item in data" :key="item.id">
           <td v-for="column in columns" :key="column.name">
-            {{ item[column.name] }}
+            <div v-if="column.actions">
+              <div v-for="action in column.actions" :key="action.name">
+                <RouterLink :to="generateRoute(action.to, item)" class="btn btn-sm btn-primary">
+                  <i :class="action.icon"></i>
+                  {{ action.name }}
+                </RouterLink>
+              </div>
+            </div>
+            <div v-else>
+              {{ item[column.name] }}
+            </div>
           </td>
         </tr>
       </tbody>
@@ -67,12 +78,15 @@
         >
           <span class="page-link"><i class="bi bi-caret-left-fill"></i></span>
         </li>
+
+        <!-- < 1 2 3 ... n-2 n-1 n > -->
         <li
           class="page-item"
-          v-for="page in meta.last_page"
+          v-for="page in paginationRange"
           :key="page"
-          :class="{ active: currentPage === page }"
+          :class="{ active: page === currentPage, disabled: page === '...' }"
           @click="fetchData(page)"
+          :disabled="page === '...'"
         >
           <span class="page-link">{{ page }}</span>
         </li>
@@ -142,6 +156,37 @@ export default {
       } finally {
         this.loading = false
       }
+    },
+    generateRoute(to, item) {
+      return to.replace(':id', item?.id)
+    },
+  },
+  computed: {
+    paginationRange() {
+      const total = Math.ceil(this.meta.total / this.meta.per_page)
+      const current = this.currentPage
+      const delta = 2
+      const range = []
+      let left = Math.max(2, current - delta)
+      let right = Math.min(total - 1, current + delta)
+
+      if (current - delta > 2) {
+        range.push(1, '...')
+      } else {
+        range.push(1)
+      }
+
+      for (let i = left; i <= right; i++) {
+        range.push(i)
+      }
+
+      if (current + delta < total - 1) {
+        range.push('...', total)
+      } else if (total > 1) {
+        range.push(total)
+      }
+
+      return range
     },
   },
   mounted() {
