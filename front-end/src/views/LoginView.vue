@@ -48,7 +48,11 @@
               </label>
             </div>
             <div class="form-footer">
-              <button type="submit" class="btn btn-primary w-100">Sign in</button>
+              <button type="submit" class="btn btn-primary w-100" :class="loading ? 'disabled' : ''">
+                <div class="spinner-border text-white me-2" role="status" v-if="loading">
+                </div>
+                Sign in
+              </button>
             </div>
           </form>
         </div>
@@ -71,10 +75,12 @@ export default {
     return {
       email: '',
       password: '',
+      loading: false,
     }
   },
   methods: {
     loginSubmit() {
+      this.loading = true;
       login(this.email, this.password)
         .then((response) => {
           console.log(response)
@@ -82,6 +88,9 @@ export default {
         })
         .catch((error) => {
           console.log(error)
+        })
+        .finally(() => {
+          this.loading = false
         })
     },
   },
