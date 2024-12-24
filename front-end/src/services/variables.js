@@ -1,5 +1,5 @@
-const API_URL = 'http://cpl-l.x10.mx/api'
-//const API_URL = 'http://localhost:8000/api'
+// const API_URL = 'http://cpl-l.x10.mx/api'
+const API_URL = 'http://localhost:8000/api'
 
 const apiUris = {
   login: '/login',
