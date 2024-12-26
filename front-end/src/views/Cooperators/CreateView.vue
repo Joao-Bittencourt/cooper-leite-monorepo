@@ -3,33 +3,20 @@
     <div class="card">
       <div class="card-header">
         <div>
-          <h3 class="card-title">Produto</h3>
+          <h3 class="card-title">Cooperado</h3>
         </div>
       </div>
 
-      <form action="/products/store" method="post" @submit.prevent="productSubmit()">
+      <form action="/cooperators/create" method="post" @submit.prevent="cooperatorSubmit()">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
               <div class="form-label">Nome</div>
               <input type="text" class="form-control" v-model="name" />
             </div>
-            <div class="col-md-3">
-              <div class="form-label">Unidade</div>
-              <input type="text" class="form-control" v-model="unit" />
-            </div>
-            <div class="col-md-3">
-              <div class="form-label">Preço</div>
-              <input type="text" v-model="price" class="form-control" />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Descrição</label>
-              <textarea
-                class="form-control"
-                v-model="description"
-                rows="3"
-                placeholder="Descrição do produto"
-              ></textarea>
+            <div class="col-md-6">
+              <div class="form-label">Email</div>
+              <input type="email" class="form-control" v-model="email" />
             </div>
           </div>
         </div>
@@ -47,30 +34,27 @@
 </template>
 
 <script>
-import { createProduct } from '../../services/ProductService.js'
+import { createCooperator } from '../../services/CooperatorService.js'
 
 export default {
   data() {
     return {
       name: '',
-      description: '',
-      unit: '',
-      price: '',
+      email: '',
       loading: false,
     }
   },
   methods: {
-    productSubmit() {
+    cooperatorSubmit() {
       this.loading = true
 
-      let product = {
+      let cooperator = {
         name: this.name,
-        description: this.description,
-        unit: this.unit,
-        price: this.price,
+        email: this.email,
+        status: 1,
       }
 
-      createProduct(product)
+      createCooperator(cooperator)
         .then((response) => {
           console.log(response)
         })

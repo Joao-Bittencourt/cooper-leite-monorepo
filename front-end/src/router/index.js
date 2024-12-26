@@ -23,6 +23,24 @@ const router = createRouter({
           component: () => import('../views/HomeView.vue'),
         },
         {
+          path: 'cooperators',
+          name: 'cooperators-list',
+          meta: { requiresAuth: true },
+          component: () => import('../views/Cooperators/ListView.vue'),
+        },
+        {
+          path: 'cooperators/create',
+          name: 'cooperators-create',
+          meta: { requiresAuth: true },
+          component: () => import('../views/Cooperators/CreateView.vue'),
+        },
+        // {
+        //   path: 'cooperators/:id',
+        //   name: 'cooperators-view',
+        //   meta: { requiresAuth: true },
+        //   component: () => import('../views/Cooperators/ShowView.vue'),
+        // },
+        {
           path: 'products',
           name: 'products-list',
           meta: { requiresAuth: true },
