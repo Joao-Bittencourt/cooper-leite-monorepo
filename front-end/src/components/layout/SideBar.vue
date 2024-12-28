@@ -85,6 +85,31 @@
               </div>
             </div>
           </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#navbar-base"
+              data-bs-toggle="dropdown"
+              data-bs-auto-close="false"
+              role="button"
+              aria-expanded="false"
+            >
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <i class="bi bi-arrow-down-up"></i>
+              </span>
+              <span class="nav-link-title"> Transações </span>
+            </a>
+            <div class="dropdown-menu">
+              <div class="dropdown-menu-columns">
+                <div class="dropdown-menu-column">
+                  <RouterLink to="/transactions" class="dropdown-item"> Listar </RouterLink>
+                  <RouterLink to="/transactions/create" class="dropdown-item">
+                    Cadastrar
+                  </RouterLink>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
     </div>

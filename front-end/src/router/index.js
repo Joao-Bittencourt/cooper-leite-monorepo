@@ -34,12 +34,12 @@ const router = createRouter({
           meta: { requiresAuth: true },
           component: () => import('../views/Cooperators/CreateView.vue'),
         },
-        // {
-        //   path: 'cooperators/:id',
-        //   name: 'cooperators-view',
-        //   meta: { requiresAuth: true },
-        //   component: () => import('../views/Cooperators/ShowView.vue'),
-        // },
+        {
+          path: 'cooperators/:id',
+          name: 'cooperators-view',
+          meta: { requiresAuth: true },
+          component: () => import('../views/Cooperators/ShowView.vue'),
+        },
         {
           path: 'products',
           name: 'products-list',
@@ -59,6 +59,18 @@ const router = createRouter({
           component: () => import('../views/Products/ShowView.vue'),
         },
         {
+          path: 'transactions',
+          name: 'transactions-list',
+          meta: { requiresAuth: true },
+          component: () => import('../views/Transactions/ListView.vue'),
+        },
+        {
+          path: 'transactions/create',
+          name: 'transactions-create',
+          meta: { requiresAuth: true },
+          component: () => import('../views/Transactions/CreateView.vue'),
+        },
+        {
           path: 'about',
           name: 'about',
           meta: { requiresAuth: true },
@@ -69,6 +81,11 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
+      component: LoginView,
+    },
+    {
+      path: '/logout',
+      name: 'logout',
       component: LoginView,
     },
     {
