@@ -11,6 +11,13 @@ use Illuminate\Http\JsonResponse;
 
 class TransactionController extends Controller
 {
+    public function index(): JsonResponse
+    {
+        return response()->json(
+            Transaction::with('product', 'cooperative')->paginate(Controller::DEFAULT_PAGE_SIZE),
+            200
+        );
+    }
     /**
      * Store a newly created resource in storage.
      */

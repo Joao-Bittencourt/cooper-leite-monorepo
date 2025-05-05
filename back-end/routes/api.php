@@ -20,13 +20,14 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-    Route::POST('/products', [ProductController::class, 'store'])->name('products.store');
-    Route::PUT('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
     Route::get('/cooperatives', [CooperativeController::class, 'index'])->name('cooperatives.index');
     Route::get('/cooperatives/{cooperative}', [CooperativeController::class, 'show'])->name('cooperatives.show');
-    Route::POST('/cooperatives', [CooperativeController::class, 'store'])->name('cooperatives.store');
-    Route::PUT('/cooperatives/{cooperative}', [CooperativeController::class, 'update'])->name('cooperatives.update');
+    Route::post('/cooperatives', [CooperativeController::class, 'store'])->name('cooperatives.store');
+    Route::put('/cooperatives/{cooperative}', [CooperativeController::class, 'update'])->name('cooperatives.update');
 
-    Route::POST('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
 });

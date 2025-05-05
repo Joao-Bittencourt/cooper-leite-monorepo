@@ -21,7 +21,7 @@
             <div class="col-md-6">
               <div class="form-label">Produto</div>
               <select v-model="product_id" class="form-select">
-                <option v-for="product_id in products" :value="product.id">
+                <option v-for="product in products" :value="product.id">
                   {{ product.value }}
                 </option>
               </select>

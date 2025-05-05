@@ -34,12 +34,9 @@ export default {
     getConfigColumns() {
       return [
         { name: 'id', label: 'Cod' },
-        { name: 'name', label: 'Nome' },
-        { name: 'description', label: 'Descrição' },
-        { name: 'unit', label: 'Unidade' },
-        { name: 'price', label: 'Preço' },
-        {
-          name: 'actions',
+        { name: 'amount', label: 'Quantidade' },
+        { name: 'type', label: 'Entrada / Saída' },
+        {          name: 'actions',
           label: 'Ações',
           actions: [{ name: 'view', icon: 'bi bi-eye', to: '/transactions/:id' }],
         },
