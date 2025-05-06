@@ -46,26 +46,32 @@ export const createProduct = (product) => {
     },
     body: JSON.stringify(product),
   })
-    .then((response) => {
-      if (response.ok) {
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.hasOwnProperty('errors')) {
         Swal.fire({
           title: 'Success!',
-          text: 'Product created successfully',
+          text: 'Transaction created successfully',
           icon: 'success',
+        }).then(() => {
+          window.location.href = '/transactions'
         })
-
-        return response.json()
       }
 
-      throw new Error(response.statusText)
-    })
-    .catch((error) => {
+      let messageErros = ''
+
+      for (const [key, value] of Object.entries(data.errors)) {
+        messageErros += `${key}: ${value[0]}<br>`
+      }
+
       Swal.fire({
         title: 'Error!',
-        text: error.message,
+        html: messageErros,
         icon: 'error',
       })
     })
+
+
 
   return result
 }

@@ -27,6 +27,22 @@
               </select>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-label">Quantidade</div>
+              <input type="text" class="form-control" v-model="amount" />
+            </div>
+            <div class="col-md-3">
+              <div class="form-label">Entrada/Saida</div>
+              <select v-model="type" class="form-select">
+                <option v-for="type in types" :value="type.id">
+                  {{ type.value }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+
         </div>
         <div class="card-footer bg-transparent mt-auto">
           <div class="btn-list justify-content-end">
@@ -45,18 +61,13 @@
 import { createTransaction } from '../../services/TransactionService.js'
 import { getCooperators } from '@/services/CooperatorService.js'
 import { getProducts } from '@/services/ProductService.js'
-//   "product_id": 1,
-//     "cooperative_id": 1,
-//     "type": "I",
-//     "amount": "1.0000",
-//     "created_by": 1,
-//     "active": 1
+
 export default {
   data() {
     return {
       product_id: '',
       cooperative_id: '',
-      type: '',
+      types: [{ id: 'I', value: 'Entrada' }, { id: 'O', value: 'Saída' }], // ['entrada', 'saida'],
       amount: '',
       created_by: '',
       cooperatives: [],
@@ -68,21 +79,21 @@ export default {
     transactionSubmit() {
       this.loading = true
 
-      let Transaction = {
+      let transaction = {
         product_id: this.product_id,
         cooperative_id: this.cooperative_id,
         type: this.type,
         amount: this.amount,
         created_by: this.created_by,
-        status: 1,
+        active: 1,
       }
 
-      createTransaction(Transaction)
+      createTransaction(transaction)
         .then((response) => {
           console.log(response)
         })
         .finally(() => {
-          this.loading = false
+          this.loading = false;
         })
     },
     fetchCooperatives() {
@@ -107,7 +118,8 @@ export default {
     },
   },
   mounted() {
-    this.fetchCooperatives(), this.fetchProducts()
+    this.fetchCooperatives(),
+      this.fetchProducts()
   },
 }
 </script>

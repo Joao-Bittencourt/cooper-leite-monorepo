@@ -20,7 +20,6 @@ class TransactionStoreRequest extends FormRequest
             'cooperative_id' => ['required', 'integer', 'exists:cooperatives,id'],
             'amount' => ['required', 'numeric', 'decimal:4'],
             'type' => ['required', 'string', 'in:I,O'],
-            'created_by' => ['required', 'integer', 'exists:users,id'],
             'active' => ['required', 'integer', 'in:0,1'],
         ];
     }

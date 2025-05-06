@@ -23,7 +23,10 @@ class TransactionController extends Controller
      */
     public function store(TransactionStoreRequest $request): JsonResponse
     {
-        $transaction = Transaction::create($request->validated());
+        $request = $request->validated();
+        $request['created_by'] = auth()->user()?->id;
+
+        $transaction = Transaction::create($request);
 
         return response()->json([
             'message' => 'Transaction created successfully',

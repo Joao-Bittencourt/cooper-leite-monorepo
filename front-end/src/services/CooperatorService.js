@@ -53,7 +53,7 @@ export const createCooperator = (cooperator) => {
           title: 'Success!',
           text: 'Cooperator created successfully',
           icon: 'success',
-        }).then((result) => {
+        }).then(() => {
           window.location.href = '/cooperators'
         })
       }

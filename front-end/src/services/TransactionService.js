@@ -38,13 +38,13 @@ export const getTransaction = (id) => {
 }
 
 export const createTransaction = (transactions) => {
-  let result = fetch(apiRoutes.transactionsCreate, {
+  let result = fetch(apiRoutes.transactionCreate, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     },
-    body: JSON.stringify(Transaction),
+    body: JSON.stringify(transactions),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -53,8 +53,8 @@ export const createTransaction = (transactions) => {
           title: 'Success!',
           text: 'Transaction created successfully',
           icon: 'success',
-        }).then((result) => {
-          window.location.href = '/Transactions'
+        }).then(() => {
+          window.location.href = '/transactions'
         })
       }
 
