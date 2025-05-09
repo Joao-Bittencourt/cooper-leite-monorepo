@@ -5,6 +5,9 @@
         <div>
           <h3 class="card-title">Cooperado</h3>
         </div>
+        <div class="card-actions">
+          <router-link to="/cooperators" class="btn btn-primary"> Voltar </router-link>
+        </div>
       </div>
 
       <form action="/cooperators/create" method="post" @submit.prevent="cooperatorSubmit()">

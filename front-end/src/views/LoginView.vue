@@ -68,11 +68,12 @@
 </template>
 
 <script>
-import { login } from '../services/AuthService.js'
+import { login, logout } from '../services/AuthService.js'
 
 export default {
   beforeMount() {
     document.title = 'Login | Cooper Leite'
+    logout()
   },
   data() {
     return {

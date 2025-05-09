@@ -34,17 +34,15 @@ export default {
     getConfigColumns() {
       return [
         { name: 'id', label: 'Cod' },
-        { name: 'amount', label: 'Quantidade' },
-        { name: 'type', label: 'Entrada / Saída' },
-        {          name: 'actions',
+        { name: 'amount', label: 'Quantidade', formatter: (value) => { return value.toFixed(4).replace('.', ',') } },
+        { name: 'type', label: 'Entrada / Saída', formatter: (value) => (value == 'I' ? 'Entrada' : 'Saída') },
+        {          
+          name: 'actions',
           label: 'Ações',
           actions: [{ name: 'view', icon: 'bi bi-eye', to: '/transactions/:id' }],
         },
       ]
-    },
-    viewItem(id) {
-      alert(id)
-    },
+    }
   },
 }
 </script>

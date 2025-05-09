@@ -18,7 +18,8 @@ const login = (email, password) => {
     })
 
     .then((data) => {
-      localStorage.setItem('token', data.data.token)
+      localStorage.setItem('token', data.data.token);
+      localStorage.setItem('user', JSON.stringify(data.data));
     })
     .catch((error) => {
       Swal.fire({
@@ -32,6 +33,8 @@ const login = (email, password) => {
 }
 
 const logout = () => {
+  if (!localStorage.getItem('token')) return;
+
   localStorage.removeItem('token')
   localStorage.removeItem('user')
 
@@ -56,11 +59,14 @@ const register = (name, email, password, c_password) => {
 
     .then((data) => {
       localStorage.setItem('token', data.data.token)
+      localStorage.setItem('user', JSON.stringify(data.data));
 
       Swal.fire({
         title: 'Success!',
         text: data.message,
         icon: 'success',
+      }).then(() => {
+        window.location.href = '/'
       })
     })
     .catch((error) => {

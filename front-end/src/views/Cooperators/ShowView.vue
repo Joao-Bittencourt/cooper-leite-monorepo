@@ -2,7 +2,14 @@
   <content-header title="cooperado" />
   <content>
     <div class="card">
-      <div class="card-header">Cooperado</div>
+      <div class="card-header">
+        <div>
+          <h3 class="card-title">Cooperado</h3>
+        </div>
+        <div class="card-actions">
+          <router-link to="/cooperators" class="btn btn-primary"> Voltar </router-link>
+        </div>
+      </div>
       <div v-if="loading" class="text-center my-4">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>

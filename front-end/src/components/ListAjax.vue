@@ -53,14 +53,14 @@
           <td v-for="column in columns" :key="column.name">
             <div v-if="column.actions">
               <div v-for="action in column.actions" :key="action.name">
-                <RouterLink :to="generateRoute(action.to, item)" class="btn btn-sm btn-primary">
+                <RouterLink :to="generateRoute(action.to, item)" class="btn btn-sm btn-primary" :class="action.class">
                   <i :class="action.icon"></i>
-                  {{ action.name }}
+                  {{ '&nbsp;' + action.name }}
                 </RouterLink>
               </div>
             </div>
             <div v-else>
-              {{ item[column.name] }}
+              {{ column.formatter ? column.formatter(item[column.name]) : item[column.name] }}
             </div>
           </td>
         </tr>

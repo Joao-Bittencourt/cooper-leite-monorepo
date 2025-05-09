@@ -5,6 +5,9 @@
         <div>
           <h3 class="card-title">Tranções</h3>
         </div>
+        <div class="card-actions">
+          <router-link to="/transactions" class="btn btn-primary"> Voltar </router-link>
+        </div>
       </div>
 
       <form action="/transactions/create" method="post" @submit.prevent="transactionSubmit()">

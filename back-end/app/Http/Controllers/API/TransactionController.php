@@ -18,6 +18,7 @@ class TransactionController extends Controller
             200
         );
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -32,5 +33,11 @@ class TransactionController extends Controller
             'message' => 'Transaction created successfully',
             'data' => $transaction
         ], 201);
+    }
+
+    public function show(Transaction $transaction): JsonResponse
+    {
+        $transaction->load('product', 'cooperative');
+        return response()->json($transaction, 200);
     }
 }

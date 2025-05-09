@@ -5,6 +5,9 @@
         <div>
           <h3 class="card-title">Produto</h3>
         </div>
+        <div class="card-actions">
+          <router-link to="/products" class="btn btn-primary"> Voltar </router-link>
+        </div>
       </div>
 
       <form action="/products/store" method="post" @submit.prevent="productSubmit()">
@@ -24,12 +27,8 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Descrição</label>
-              <textarea
-                class="form-control"
-                v-model="description"
-                rows="3"
-                placeholder="Descrição do produto"
-              ></textarea>
+              <textarea class="form-control" v-model="description" rows="3"
+                placeholder="Descrição do produto"></textarea>
             </div>
           </div>
         </div>

@@ -55,7 +55,10 @@
             </label>
           </div>
           <div class="form-footer">
-            <button type="submit" class="btn btn-primary w-100">Create new account</button>
+            <button type="submit" class="btn btn-primary w-100" :class="loading ? 'disabled' : ''">
+              <div class="spinner-border text-white me-2" role="status" v-if="loading"></div>
+              Create new account
+            </button>
           </div>
         </div>
       </form>
@@ -78,18 +81,15 @@ export default {
       email: '',
       password: '',
       c_password: '',
+      loading: false,
     }
   },
   methods: {
     registerSubmit() {
-      register(this.name, this.email, this.password, this.c_password)
-        .then((response) => {
-          console.log(response)
-          this.$router.push('/')
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      this.loading = true;
+      register(this.name, this.email, this.password, this.c_password).finally(() => {
+        this.loading = false;
+      })
     },
   },
 }
