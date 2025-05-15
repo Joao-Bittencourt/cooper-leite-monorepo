@@ -7,6 +7,7 @@ const apiUris = {
   user: '/user',
   products: '/products',
   productCreate: '/products',
+  productsCount: '/products/active-count',
   cooperators: '/cooperatives',
   cooperatorsCreate: '/cooperatives',
   transactions: '/transactions',

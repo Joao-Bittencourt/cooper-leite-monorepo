@@ -53,4 +53,11 @@ class ProductController extends Controller
             'message' => 'Product updated successfully'
         ]);
     }
+
+    public function activeCount(): JsonResponse
+    {
+        return response()->json([
+            'count' => Product::where('active', 1)->count()
+        ]);
+    }
 }

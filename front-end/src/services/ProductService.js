@@ -94,3 +94,21 @@ export const updateProduct = (id, product) => {
 
   return result
 }
+
+export const countProducts = () => {
+  let result = fetch(apiRoutes.productsCount, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json()
+    }
+
+    throw new Error(response.statusText)
+  })
+
+  return result
+}
