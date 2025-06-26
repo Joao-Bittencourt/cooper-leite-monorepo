@@ -40,4 +40,11 @@ class TransactionController extends Controller
         $transaction->load('product', 'cooperative');
         return response()->json($transaction, 200);
     }
+
+    public function activeCount(): JsonResponse
+    {
+        return response()->json([
+            'count' => Transaction::where('active', 1)->count()
+        ]);
+    }
 }

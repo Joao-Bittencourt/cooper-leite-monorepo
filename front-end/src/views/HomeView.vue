@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     countProducts().then((response) => {
-      this.countProducts = response.data.count
+      this.countProducts = response.count
     })
   }
 }

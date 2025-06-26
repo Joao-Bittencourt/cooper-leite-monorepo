@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/cooperatives/{cooperative}', [CooperativeController::class, 'update'])->name('cooperatives.update');
 
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::get('/transactions/active-count', [TransactionController::class, 'activeCount'])->name('transactions.activeCount');
     Route::get('/transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
     Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
 });
