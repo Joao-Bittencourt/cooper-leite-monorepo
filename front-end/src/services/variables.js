@@ -10,8 +10,10 @@ const apiUris = {
   productsCount: '/products/active-count',
   cooperators: '/cooperatives',
   cooperatorsCreate: '/cooperatives',
+  cooperatorsCount: '/cooperatives/active-count',
   transactions: '/transactions',
   transactionCreate: '/transactions',
+  transactionsCount: '/transactions/active-count',
 }
 
 // Adiciona o protocolo e a URL base às URIs

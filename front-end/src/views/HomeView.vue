@@ -59,6 +59,8 @@
 
 <script>
 import { countProducts } from '@/services/ProductService';
+import { countCooperatives } from '@/services/CooperatorService';
+import { countTransactions } from '@/services/TransactionService';
 
 export default {
   data() {
@@ -71,7 +73,13 @@ export default {
   mounted() {
     countProducts().then((response) => {
       this.countProducts = response.count
-    })
+    });
+    countcooperatives().then((response) => {
+      this.countCooperatives = response.count
+    });
+    countTransactions().then((response) => {
+      this.countTransactions = response.count
+    });
   }
 }
 </script>

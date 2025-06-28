@@ -92,3 +92,21 @@ export const updateTransaction = (id, transaction) => {
 
   return result
 }
+
+export const countTransactions = () => {
+  let result = fetch(apiRoutes.transactionsCount, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json()
+    }
+
+    throw new Error(response.statusText)
+  })
+
+  return result
+}

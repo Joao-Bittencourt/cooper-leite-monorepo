@@ -92,3 +92,21 @@ export const updateCooperator = (id, cooperator) => {
 
   return result
 }
+
+export const countCooperatives = () => {
+  let result = fetch(apiRoutes.cooperatorsCount, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json()
+    }
+
+    throw new Error(response.statusText)
+  })
+
+  return result
+}

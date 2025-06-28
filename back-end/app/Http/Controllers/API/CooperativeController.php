@@ -53,4 +53,11 @@ class CooperativeController extends Controller
             'message' => 'Cooperative updated successfully'
         ]);
     }
+
+    public function activeCount(): JsonResponse
+    {
+        return response()->json([
+            'count' => Cooperative::where('active', 1)->count()
+        ]);
+    }
 }

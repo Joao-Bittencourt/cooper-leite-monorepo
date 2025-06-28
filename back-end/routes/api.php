@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
     Route::get('/cooperatives', [CooperativeController::class, 'index'])->name('cooperatives.index');
+    Route::get('/cooperatives/active-count', [CooperativeController::class, 'activeCount'])->name('cooperatives.activeCount');
     Route::get('/cooperatives/{cooperative}', [CooperativeController::class, 'show'])->name('cooperatives.show');
     Route::post('/cooperatives', [CooperativeController::class, 'store'])->name('cooperatives.store');
     Route::put('/cooperatives/{cooperative}', [CooperativeController::class, 'update'])->name('cooperatives.update');
