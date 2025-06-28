@@ -74,7 +74,7 @@ export default {
     countProducts().then((response) => {
       this.countProducts = response.count
     });
-    countcooperatives().then((response) => {
+    countCooperatives().then((response) => {
       this.countCooperatives = response.count
     });
     countTransactions().then((response) => {
